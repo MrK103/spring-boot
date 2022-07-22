@@ -1,0 +1,45 @@
+
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+<meta charset="UTF-8">
+<title>Create user</title>
+</head>
+<body>
+<h1>Update user</h1>
+<form action="#" th:action="@{/user-update}" th:object="${user}" method="post">
+    <label for="id">ID</label>
+    <input readonly type="number" th:field="*{id}" id="id" placeholder="ID">
+    <br/>
+    <label for="firstName">First name</label>
+    <input type="text" th:field="*{firstName}" id="firstName" placeholder="First Name">
+    <br/>
+    <label for="lastName">Last name</label>
+    <input type="text" th:field="*{lastName}" id="lastName" placeholder="Last Name">
+    <br/>
+    <label for="email">Email</label>
+    <input type="text" th:field="*{email}" id="email" placeholder="Email">
+    <br/>
+    <br/>
+    <button type="submit" value="Update User" name="run_script" >Update User</button>
+    <button onclick="window.location.href='http://localhost:8080/user';" name="run_script">Back to main menu</button>
+
+</form>
+</body>
+<style type="text/css">
+    button[name="run_script"] {
+        border: none;
+        border-radius: 6px;
+        padding: 4px 15px;
+        background: #FFB6C1;
+        cursor: pointer;
+        /*text-transform: uppercase;*/
+        font-weight: bold;
+        color: black;
+    }
+
+    button[name="run_script"]:hover {
+        background: #FF69B4;
+    }
+</style>
+</html>

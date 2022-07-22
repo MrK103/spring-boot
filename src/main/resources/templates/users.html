@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Users</title>
+</head>
+<body>
+<h1>Users list</h1>
+<div th:switch="${users}">
+    <h2 th:case="null">Empty</h2>
+    <div th:case="*">
+        <table>
+            <tr>
+                <th>id</th>
+                <th>Name</th>
+                <th>Lastname</th>
+                <th>E-mail</th>
+            </tr>
+            <tr>
+
+            <tr th:each="user : ${users}">
+                <td th:utext="${user.getId()}"></td>
+                <td>
+                    <input type="text" id="firstName" th:value="${user.getFirstName()}"/>
+                </td>
+                <td>
+                    <input type="text" id="lastName" th:value="${user.getLastName()}"/>
+                </td>
+                <td>
+                    <input type="text" id="email" th:value="${user.getEmail()}"/>
+                </td>
+                <td>
+                    <a th:href="@{user-update/{id}(id=${user.getId()})}">Edit</a>
+                </td>
+                <td>
+                    <a th:href="@{user-delete/{id}(id=${user.getId()})}">Delete</a>
+                </td>
+            </tr>
+        </table>
+    </div>
+</div>
+<br>
+<button name="run_script" onclick="window.location.href='http://localhost:8080/user-create';">Add new user
+</button>
+
+</body>
+
+<style type="text/css">
+    button[name="run_script"] {
+        border: none;
+        border-radius: 6px;
+        padding: 4px 15px;
+        background: #FFB6C1;
+        cursor: pointer;
+        /*text-transform: uppercase;*/
+        font-weight: bold;
+        color: black;
+    }
+
+    button[name="run_script"]:hover {
+        background: #FF69B4;
+    }
+</style>
+</html>
